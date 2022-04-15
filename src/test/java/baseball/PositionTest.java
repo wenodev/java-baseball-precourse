@@ -1,6 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -23,5 +24,10 @@ public class PositionTest {
         assertThatThrownBy(() -> {
             new Position(value);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void equals(){
+        assertThat(new Position(1)).isEqualTo(new Position(1));
     }
 }
