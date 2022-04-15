@@ -1,6 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -23,5 +24,11 @@ public class NumberTest {
         assertThatThrownBy(() -> {
             new Number(value);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("동등성을 보장한다.")
+    @Test
+    void equals(){
+        assertThat(new Number(1)).isEqualTo(new Number(1));
     }
 }
