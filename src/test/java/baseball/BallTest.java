@@ -1,5 +1,7 @@
 package baseball;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -15,5 +17,14 @@ public class BallTest {
 
         assertThat(ball.getPosition()).isEqualTo(position);
         assertThat(ball.getNumber()).isEqualTo(number);
+    }
+
+    @DisplayName("동등성을 보장합니다.")
+    @Test
+    void equals(){
+        Position position = new Position(1);
+        Number number = new Number(1);
+
+        assertThat(new Ball(position,number)).isEqualTo(new Ball(position,number));
     }
 }

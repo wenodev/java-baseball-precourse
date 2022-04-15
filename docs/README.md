@@ -6,6 +6,7 @@
   - [x] Position은 1~3 사이의 값이 아니면 예외가 발생한다.
   - [x] Position은 동등성을 보장한다.
 - [x] Ball은 Position과 Number로 구성된다.
+  - [x] Ball은 동등성을 보장한다.
 - [x] BallStatus는 STRIKE, BALL, NOTHING을 갖는다.
 - [ ] Referee가 있다.
   - [ ] Referee는 두개의 Ball을 판정한다.
