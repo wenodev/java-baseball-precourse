@@ -11,3 +11,5 @@
 - [x] Referee가 있다.
   - [x] Referee는 두개의 Ball을 판정한다.
 - [x] Balls는 3개의 Ball로 구성된다.
+- [x] NumberGenerator가 있다.
+  - [x] 중복되지 않은 3개의 숫자를 만든다.
