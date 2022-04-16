@@ -6,9 +6,9 @@ public class Ball {
     private final Position position;
     private final Number number;
 
-    public Ball(Position position, Number number) {
-        this.position = position;
-        this.number = number;
+    public Ball(int position, int number) {
+        this.position = new Position(position);
+        this.number = new Number(number);
     }
 
     public Position getPosition() {

@@ -10,21 +10,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BallTest {
     @ParameterizedTest
     @CsvSource(value = {"1,1", "2,2"})
-    void construct(int p, int n){
-        Position position = new Position(p);
-        Number number = new Number(n);
+    void construct(int position, int number){
         Ball ball = new Ball(position,number);
 
-        assertThat(ball.getPosition()).isEqualTo(position);
-        assertThat(ball.getNumber()).isEqualTo(number);
+        assertThat(ball.getPosition()).isEqualTo(new Position(position));
+        assertThat(ball.getNumber()).isEqualTo(new Number(number));
     }
 
     @DisplayName("동등성을 보장합니다.")
     @Test
     void equals(){
-        Position position = new Position(1);
-        Number number = new Number(1);
-
-        assertThat(new Ball(position,number)).isEqualTo(new Ball(position,number));
+        assertThat(new Ball(1,1)).isEqualTo(new Ball(1,1));
     }
 }

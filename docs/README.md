@@ -10,4 +10,4 @@
 - [x] BallStatus는 STRIKE, BALL, NOTHING을 갖는다.
 - [x] Referee가 있다.
   - [x] Referee는 두개의 Ball을 판정한다.
-- [ ] Balls는 3개의 Ball로 구성된다.
+- [x] Balls는 3개의 Ball로 구성된다.
