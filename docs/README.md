@@ -15,3 +15,6 @@
 - [x] NumberGenerator가 있다.
   - [x] 중복되지 않은 3개의 숫자를 만든다.
 - [x] GameCode는 RESTART와, EXIT를 가진다. 
+- [x] JudgeResult는 strike와 ball을 가진다.
+  - [x] 판정 결과를 가진다.
+  - [x] 판정 결과를 한글로 나타낸다.
