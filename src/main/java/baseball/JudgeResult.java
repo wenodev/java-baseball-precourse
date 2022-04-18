@@ -38,13 +38,17 @@ public class JudgeResult {
         if (strike == 0 && ball== 0){
             return NOTHING_MESSAGE;
         }
+        addMessage(stringBuilder);
+        return stringBuilder.toString().trim();
+    }
+
+    private void addMessage(StringBuilder stringBuilder) {
         if (ball > 0){
             stringBuilder.append(ball).append(BALL_MESSAGE);
         }
         if (strike > 0){
             stringBuilder.append(strike).append(STRIKE_MESSAGE);
         }
-        return stringBuilder.toString().trim();
     }
 
     public boolean isAnswer() {
