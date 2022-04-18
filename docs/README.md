@@ -7,9 +7,11 @@
   - [x] Position은 동등성을 보장한다.
 - [x] Ball은 Position과 Number로 구성된다.
   - [x] Ball은 동등성을 보장한다.
+  - [x] 2개의 Ball을 비교하여 BallStatus를 구한다.
 - [x] BallStatus는 STRIKE, BALL, NOTHING을 갖는다.
 - [x] Referee가 있다.
   - [x] Referee는 두개의 Ball을 판정한다.
 - [x] Balls는 3개의 Ball로 구성된다.
 - [x] NumberGenerator가 있다.
   - [x] 중복되지 않은 3개의 숫자를 만든다.
+- [x] GameCode는 RESTART와, EXIT를 가진다. 
