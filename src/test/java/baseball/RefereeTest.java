@@ -3,51 +3,87 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RefereeTest {
-    @DisplayName("position과 number로 구성됩니다.")
+    @DisplayName("computerBalls를 가집니다.")
     @Test
     void construct(){
-        Ball comBall = new Ball(1,1);
-        Referee referee = new Referee(comBall);
+        Balls computerBalls = new Balls(Arrays.asList(1,2,3));
+        Referee referee = new Referee(computerBalls);
 
-        assertThat(referee.getComBall()).isEqualTo(comBall);
+        assertThat(referee.getComputerBalls()).isEqualTo(computerBalls);
     }
 
-    @DisplayName("같은 Ball이라면 STRIKE 입니다.")
+    @DisplayName("3STRIKE 입니다.")
     @Test
-    void judge_strike(){
-        Ball comBall = new Ball(1,1);
-        Ball playerBall = new Ball(1,1);
-        Referee referee = new Referee(comBall);
+    void judge_3strike(){
+        Balls computerBalls = new Balls(Arrays.asList(1,2,3));
+        Balls playerBalls = new Balls(Arrays.asList(1,2,3));
+        Referee referee = new Referee(computerBalls);
 
-        BallStatus ballStatus = referee.judge(playerBall);
+        JudgeResult judgeResult = referee.judgeBalls(playerBalls);
 
-        assertThat(ballStatus).isEqualTo(BallStatus.STRIKE);
+        assertThat(judgeResult.getStrike()).isEqualTo(3);
+        assertThat(judgeResult.getBall()).isEqualTo(0);
+        assertThat(judgeResult.toMessage()).isEqualTo("3스트라이크");
     }
 
-    @DisplayName("position은 다른고 number가 같으면 BALL 입니다.")
+    @DisplayName("2BALL 1STRIKE 입니다.")
     @Test
-    void judge_ball(){
-        Ball comBall = new Ball(1,1);
-        Ball playerBall = new Ball(2,1);
-        Referee referee = new Referee(comBall);
+    void judge_1strike_2ball(){
+        Balls computerBalls = new Balls(Arrays.asList(1,2,3));
+        Balls playerBalls = new Balls(Arrays.asList(2,1,3));
+        Referee referee = new Referee(computerBalls);
 
-        BallStatus ballStatus = referee.judge(playerBall);
+        JudgeResult judgeResult = referee.judgeBalls(playerBalls);
 
-        assertThat(ballStatus).isEqualTo(BallStatus.BALL);
+        assertThat(judgeResult.getStrike()).isEqualTo(1);
+        assertThat(judgeResult.getBall()).isEqualTo(2);
+        assertThat(judgeResult.toMessage()).isEqualTo("2볼 1스트라이크");
     }
 
-    @DisplayName("position과 number 둘 다 다르면 NOTHING 입니다.")
+    @DisplayName("1BALL 1STRIKE 입니다.")
+    @Test
+    void judge_1strike_1ball(){
+        Balls computerBalls = new Balls(Arrays.asList(5,8,9));
+        Balls playerBalls = new Balls(Arrays.asList(5,9,7));
+        Referee referee = new Referee(computerBalls);
+
+        JudgeResult judgeResult = referee.judgeBalls(playerBalls);
+
+        assertThat(judgeResult.getStrike()).isEqualTo(1);
+        assertThat(judgeResult.getBall()).isEqualTo(1);
+        assertThat(judgeResult.toMessage()).isEqualTo("1볼 1스트라이크");
+    }
+
+    @DisplayName("3BALL 입니다.")
+    @Test
+    void judge_3ball(){
+        Balls computerBalls = new Balls(Arrays.asList(1,2,3));
+        Balls playerBalls = new Balls(Arrays.asList(3,1,2));
+        Referee referee = new Referee(computerBalls);
+
+        JudgeResult judgeResult = referee.judgeBalls(playerBalls);
+
+        assertThat(judgeResult.getStrike()).isEqualTo(0);
+        assertThat(judgeResult.getBall()).isEqualTo(3);
+        assertThat(judgeResult.toMessage()).isEqualTo("3볼");
+    }
+
+    @DisplayName("nothing")
     @Test
     void judge_nothing(){
-        Ball comBall = new Ball(1,1);
-        Ball playerBall = new Ball(2,2);
-        Referee referee = new Referee(comBall);
+        Balls computerBalls = new Balls(Arrays.asList(1,2,3));
+        Balls playerBalls = new Balls(Arrays.asList(4,5,6));
+        Referee referee = new Referee(computerBalls);
 
-        BallStatus ballStatus = referee.judge(playerBall);
+        JudgeResult judgeResult = referee.judgeBalls(playerBalls);
 
-        assertThat(ballStatus).isEqualTo(BallStatus.NOTHING);
+        assertThat(judgeResult.getStrike()).isEqualTo(0);
+        assertThat(judgeResult.getBall()).isEqualTo(0);
+        assertThat(judgeResult.toMessage()).isEqualTo("낫싱");
     }
 }
