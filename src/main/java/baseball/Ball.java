@@ -19,6 +19,20 @@ public class Ball {
         return number;
     }
 
+    public BallStatus compare(Ball playerBall) {
+        if (this.equals(playerBall)){
+            return BallStatus.STRIKE;
+        }
+        if (playerBall.matchNumber(number)){
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
+    }
+
+    private boolean matchNumber(Number number) {
+        return this.number.equals(number);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
