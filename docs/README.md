@@ -19,3 +19,4 @@
   - [x] 판정 결과를 가진다.
   - [x] 판정 결과를 한글로 나타낸다.
 - [x] View는 콘솔에 문자열를 출력합니다.
+- [x] NumberUtils의 toInt 메소드는 String을 int로 변환한다.
